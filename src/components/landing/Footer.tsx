@@ -9,8 +9,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1400px] border-t border-white/15 px-5 py-16 md:px-10">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Logo />
-            <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-[#9a978f]">Brands Hub</p>
+            <Logo tone="paper" className="h-11" />
           </div>
 
           <nav aria-label="Rodapé" className="md:col-span-3">

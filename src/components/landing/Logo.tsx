@@ -1,9 +1,16 @@
-// Marca tipográfica provisória (não há logo oficial em public/).
-// Para usar o logo oficial, adicione-o em public/ e troque este componente por <Image>.
-export default function Logo({ className = "" }: { className?: string }) {
+import Image from "next/image";
+
+// Logo oficial (public/brand). "ink" = texto escuro (fundos claros); "paper" = texto claro (fundos escuros).
+export default function Logo({ tone = "ink", className = "h-9" }: { tone?: "ink" | "paper"; className?: string }) {
   return (
-    <span className={`inline-flex items-baseline gap-2 font-serif uppercase leading-none ${className}`}>
-      <span className="text-[22px] tracking-[0.14em]">Fashion Closet</span>
-    </span>
+    <Image
+      src={tone === "ink" ? "/brand/logo-ink.svg" : "/brand/logo-paper.svg"}
+      alt="Fashion Closet — Brands Hub"
+      width={302}
+      height={72}
+      unoptimized
+      priority
+      className={`w-auto ${className}`}
+    />
   );
 }

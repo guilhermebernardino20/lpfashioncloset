@@ -28,7 +28,6 @@ export default function Photo({ src, alt, className = "", tone = "light", priori
           src={src}
           alt={alt}
           fill
-          unoptimized
           priority={priority}
           sizes={sizes}
           className="object-cover"

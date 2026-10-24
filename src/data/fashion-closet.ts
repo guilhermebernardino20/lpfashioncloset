@@ -1,14 +1,13 @@
 // Fonte única de dados da landing page Fashion Closet — Brands Hub.
-// ATENÇÃO: valores marcados com "CONFIRMAR" são provisórios e devem ser
-// substituídos pelos oficiais antes da publicação.
+// As peças são demonstrativas (demo: true) — substituir pelo catálogo real.
 
 export const contact = {
   instagram: {
-    handle: "@fashioncloset", // CONFIRMAR handle oficial
-    url: "https://www.instagram.com/fashioncloset", // CONFIRMAR URL oficial
+    handle: "@fashionclosetsb",
+    url: "https://www.instagram.com/fashionclosetsb/",
   },
   whatsapp: {
-    number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5500000000000", // CONFIRMAR (DDI+DDD+número)
+    number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5541987747456", // (41) 98774-7456
   },
 } as const;
 
@@ -29,13 +28,17 @@ export type Brand = {
   id: string;
   name: string;
   descriptor: string;
+  logo: string; // PNG monocromático em public/brand/marcas
+  logoHeight: number; // altura de exibição (px) para equilibrar o peso óptico
 };
 
 // Expansível: basta adicionar novos itens ao array.
 export const brands: Brand[] = [
-  { id: "farm", name: "Farm", descriptor: "Estampa, cor e leveza brasileira." },
-  { id: "zara", name: "Zara", descriptor: "Tendência com ritmo de passarela." },
-  { id: "animale", name: "Animale", descriptor: "Sofisticação em corte e silhueta." },
+  { id: "farm", logo: "/brand/marcas/farm.png", logoHeight: 52, name: "Farm", descriptor: "Estampa, cor e leveza brasileira." },
+  { id: "zara", logo: "/brand/marcas/zara.png", logoHeight: 34, name: "Zara", descriptor: "Tendência com ritmo de passarela." },
+  { id: "animale", logo: "/brand/marcas/animale.png", logoHeight: 36, name: "Animale", descriptor: "Sofisticação em corte e silhueta." },
+  { id: "dimy", logo: "/brand/marcas/dimy.png", logoHeight: 30, name: "Dimy", descriptor: "Feminilidade em tecidos fluidos." },
+  { id: "nati-vozza", logo: "/brand/marcas/nati-vozza.png", logoHeight: 34, name: "Nati Vozza", descriptor: "Peças de atitude, prontas para combinar." },
 ];
 
 export type Product = {
@@ -49,12 +52,12 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  { id: "p01", name: "Vestido midi estampado", brand: "Farm", category: "Vestidos", price: 690, image: "/images/produtos/p01.jpg", demo: true },
-  { id: "p02", name: "Blazer alfaiataria", brand: "Zara", category: "Alfaiataria", price: 459, image: "/images/produtos/p02.jpg", demo: true },
-  { id: "p03", name: "Camisa de seda", brand: "Animale", category: "Blusas", price: 890, image: "/images/produtos/p03.jpg", demo: true },
-  { id: "p04", name: "Calça wide leg", brand: "Zara", category: "Calças", price: 299, image: "/images/produtos/p04.jpg", demo: true },
-  { id: "p05", name: "Saia plissada", brand: "Farm", category: "Saias", image: "/images/produtos/p05.jpg", demo: true },
-  { id: "p06", name: "Vestido slip", brand: "Animale", category: "Vestidos", price: 1190, image: "/images/produtos/p06.jpg", demo: true },
+  { id: "p01", name: "Vestido midi bordado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p01.jpg", demo: true },
+  { id: "p02", name: "Vestido assimétrico rosé", brand: "Zara", category: "Vestidos", image: "/images/produtos/p02.jpg", demo: true },
+  { id: "p03", name: "Vestido longo fluido", brand: "Dimy", category: "Vestidos", image: "/images/produtos/p03.webp", demo: true },
+  { id: "p04", name: "Vestido branco estampado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p04.webp", demo: true },
+  { id: "p05", name: "Vestido tricô com franjas", brand: "Animale", category: "Vestidos", image: "/images/produtos/p05.webp", demo: true },
+  { id: "p06", name: "Blazer e short jeans", brand: "Nati Vozza", category: "Looks", image: "/images/produtos/p06.webp", demo: true },
 ];
 
 export type EditorialImage = {
@@ -67,16 +70,16 @@ export type EditorialImage = {
 export const heroImage: EditorialImage = {
   id: "hero",
   src: "/images/editorial/hero.jpg",
-  alt: "Imagem editorial Fashion Closet — look da seleção",
+  alt: "Duas modelos sorrindo em movimento, com vestidos estampados em verde e amarelo, em um parque urbano",
   ratio: "portrait",
 };
 
+// Provisório: reaproveita fotos da seleção até haver imagens editoriais próprias.
 export const editorial: EditorialImage[] = [
-  { id: "e1", src: "/images/editorial/e1.jpg", alt: "Editorial Fashion Closet — look 1", ratio: "portrait" },
-  { id: "e2", src: "/images/editorial/e2.jpg", alt: "Editorial Fashion Closet — detalhe de tecido", ratio: "square" },
-  { id: "e3", src: "/images/editorial/e3.jpg", alt: "Editorial Fashion Closet — look 2", ratio: "landscape" },
-  { id: "e4", src: "/images/editorial/e4.jpg", alt: "Editorial Fashion Closet — look 3", ratio: "portrait" },
-  { id: "e5", src: "/images/editorial/e5.jpg", alt: "Editorial Fashion Closet — acessórios", ratio: "square" },
+  { id: "e1", src: "/images/produtos/p04.webp", alt: "Modelo com vestido branco de estampa floral e bolsa laranja diante de um coco pintado", ratio: "portrait" },
+  { id: "e2", src: "/images/produtos/p01.jpg", alt: "Modelo com vestido bordado azul e branco carregando uma bolsa em forma de margarida, junto ao mar", ratio: "portrait" },
+  { id: "e3", src: "/images/produtos/p05.webp", alt: "Modelo com vestido de tricô bege com franjas na barra e bolsa marrom", ratio: "portrait" },
+  { id: "e4", src: "/images/produtos/p03.webp", alt: "Modelo com vestido longo cinza fluido sobre fundo dourado", ratio: "portrait" },
 ];
 
 export const nav = [

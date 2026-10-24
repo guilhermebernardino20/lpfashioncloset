@@ -1,3 +1,4 @@
+import BrandMarquee from "@/components/landing/BrandMarquee";
 import BrandUniverse from "@/components/landing/BrandUniverse";
 import EditorialGallery from "@/components/landing/EditorialGallery";
 import FinalCTA from "@/components/landing/FinalCTA";
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <BrandMarquee />
         <Manifesto />
         <BrandUniverse />
         <ProductSelection />
