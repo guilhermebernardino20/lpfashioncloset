@@ -24,8 +24,8 @@ export default function FinalCTA() {
               </Button>
             </MagneticButton>
             <MagneticButton>
-              <Button href="#selecao" variant="secondary">
-                Explorar seleção
+              <Button href="#editorial" variant="secondary">
+                Explorar editorial
               </Button>
             </MagneticButton>
             <MagneticButton>

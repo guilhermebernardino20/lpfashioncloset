@@ -34,7 +34,7 @@ export default function Hero() {
           </motion.p>
           <motion.div {...fade(1.55)} className="mt-12 flex flex-col items-start gap-3 sm:flex-row">
             <MagneticButton>
-              <Button href="#selecao">Explorar seleção</Button>
+              <Button href="#editorial">Explorar editorial</Button>
             </MagneticButton>
             <MagneticButton>
               <Button href="#conceito" variant="secondary">
@@ -55,7 +55,7 @@ export default function Hero() {
             sizes="(min-width: 1024px) 40vw, 100vw"
           />
           <motion.p {...fade(1.6)} className="label mt-4">
-            Seleção — Coleção atual
+            Editorial — Coleção atual
           </motion.p>
         </div>
       </div>

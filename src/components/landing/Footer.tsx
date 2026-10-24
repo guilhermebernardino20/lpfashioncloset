@@ -45,9 +45,8 @@ export default function Footer() {
         </div>
 
         <p className="mt-16 text-xs leading-relaxed text-neutral-500">
-          © 2026 Fashion Closet. Todos os direitos reservados. Farm, Zara e Animale são marcas de
-          seus respectivos titulares; a menção não implica parceria oficial. Peças, preços e disponibilidade sujeitos a
-          confirmação no atendimento.
+          © 2026 Fashion Closet. Todos os direitos reservados. As marcas citadas pertencem aos
+          seus respectivos titulares; a menção não implica parceria oficial.
         </p>
       </div>
     </footer>

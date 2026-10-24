@@ -23,8 +23,6 @@ export const messages = {
   online: "Olá! Gostaria de consultar opções e disponibilidade da seleção Fashion Closet.",
   appointment:
     "Olá! Gostaria de solicitar um agendamento para o atendimento personalizado do Fashion Closet.",
-  product: (name: string, brand: string) =>
-    `Olá! Gostaria de consultar a disponibilidade da peça "${name}" (${brand}).`,
 };
 
 export type Brand = {
@@ -39,37 +37,17 @@ export type Brand = {
 // Expansível: basta adicionar novos itens ao array.
 export const brands: Brand[] = [
   { id: "farm", logo: "/brand/marcas/farm.png", campaign: "/images/editorial/hero.jpg", logoHeight: 52, name: "Farm", descriptor: "Estampa, cor e leveza brasileira." },
-  { id: "zara", logo: "/brand/marcas/zara.png", campaign: "/images/produtos/p02.jpg", logoHeight: 34, name: "Zara", descriptor: "Tendência com ritmo de passarela." },
-  { id: "animale", logo: "/brand/marcas/animale.png", campaign: "/images/produtos/p05.webp", logoHeight: 36, name: "Animale", descriptor: "Sofisticação em corte e silhueta." },
-  { id: "dimy", logo: "/brand/marcas/dimy.png", campaign: "/images/produtos/p03.webp", logoHeight: 30, name: "Dimy", descriptor: "Feminilidade em tecidos fluidos." },
-  { id: "nati-vozza", logo: "/brand/marcas/nati-vozza.png", campaign: "/images/produtos/p06.webp", logoHeight: 34, name: "Nati Vozza", descriptor: "Peças de atitude, prontas para combinar." },
-];
-
-export type Product = {
-  id: string;
-  name: string;
-  brand: string;
-  category: string;
-  price?: number;
-  image: string;
-  detailOrigin: string; // foco do recorte de detalhe exibido no hover (transform-origin)
-  featured?: boolean;
-  demo: true; // dados demonstrativos — substituir pelo catálogo real
-};
-
-export const products: Product[] = [
-  { id: "p01", detailOrigin: "50% 45%", featured: true, name: "Vestido midi bordado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p01.jpg", demo: true },
-  { id: "p02", detailOrigin: "45% 45%", featured: true, name: "Vestido assimétrico rosé", brand: "Zara", category: "Vestidos", image: "/images/produtos/p02.jpg", demo: true },
-  { id: "p03", detailOrigin: "50% 45%", name: "Vestido longo fluido", brand: "Dimy", category: "Vestidos", image: "/images/produtos/p03.webp", demo: true },
-  { id: "p04", detailOrigin: "40% 55%", featured: true, name: "Vestido branco estampado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p04.webp", demo: true },
-  { id: "p05", detailOrigin: "50% 88%", name: "Vestido tricô com franjas", brand: "Animale", category: "Vestidos", image: "/images/produtos/p05.webp", demo: true },
-  { id: "p06", detailOrigin: "50% 50%", name: "Blazer e short jeans", brand: "Nati Vozza", category: "Looks", image: "/images/produtos/p06.webp", demo: true },
+  { id: "zara", logo: "/brand/marcas/zara.png", campaign: "/images/editorial/look-2.jpg", logoHeight: 34, name: "Zara", descriptor: "Tendência com ritmo de passarela." },
+  { id: "animale", logo: "/brand/marcas/animale.png", campaign: "/images/editorial/look-5.webp", logoHeight: 36, name: "Animale", descriptor: "Sofisticação em corte e silhueta." },
+  { id: "dimy", logo: "/brand/marcas/dimy.png", campaign: "/images/editorial/look-3.webp", logoHeight: 30, name: "Dimy", descriptor: "Feminilidade em tecidos fluidos." },
+  { id: "nati-vozza", logo: "/brand/marcas/nati-vozza.png", campaign: "/images/editorial/look-6.webp", logoHeight: 34, name: "Nati Vozza", descriptor: "Peças de atitude, prontas para combinar." },
 ];
 
 export type EditorialImage = {
   id: string;
   src: string;
   alt: string;
+  brand?: string; // crédito exibido como legenda
   ratio: "portrait" | "landscape" | "square";
 };
 
@@ -80,35 +58,18 @@ export const heroImage: EditorialImage = {
   ratio: "portrait",
 };
 
-// Provisório: reaproveita fotos da seleção até haver imagens editoriais próprias.
 export const editorial: EditorialImage[] = [
-  { id: "e1", src: "/images/produtos/p04.webp", alt: "Modelo com vestido branco de estampa floral e bolsa laranja diante de um coco pintado", ratio: "portrait" },
-  { id: "e2", src: "/images/produtos/p01.jpg", alt: "Modelo com vestido bordado azul e branco carregando uma bolsa em forma de margarida, junto ao mar", ratio: "portrait" },
-  { id: "e3", src: "/images/produtos/p05.webp", alt: "Modelo com vestido de tricô bege com franjas na barra e bolsa marrom", ratio: "portrait" },
-  { id: "e4", src: "/images/produtos/p03.webp", alt: "Modelo com vestido longo cinza fluido sobre fundo dourado", ratio: "portrait" },
+  { id: "e1", src: "/images/editorial/look-1.jpg", brand: "Farm", alt: "Modelo com vestido bordado azul e branco carregando uma bolsa em forma de margarida, junto ao mar", ratio: "portrait" },
+  { id: "e2", src: "/images/editorial/look-2.jpg", brand: "Zara", alt: "Modelo com vestido assimétrico rosé sobre fundo branco", ratio: "portrait" },
+  { id: "e3", src: "/images/editorial/look-3.webp", brand: "Dimy", alt: "Modelo com vestido longo cinza fluido sobre fundo dourado", ratio: "portrait" },
+  { id: "e4", src: "/images/editorial/look-4.webp", brand: "Farm", alt: "Modelo com vestido branco de estampa floral e bolsa laranja diante de um coco pintado", ratio: "portrait" },
+  { id: "e5", src: "/images/editorial/look-5.webp", brand: "Animale", alt: "Modelo com vestido de tricô bege com franjas na barra e bolsa marrom", ratio: "portrait" },
+  { id: "e6", src: "/images/editorial/look-6.webp", brand: "Nati Vozza", alt: "Modelo com blazer cinza, top e short jeans claro", ratio: "portrait" },
 ];
 
 export const nav = [
   { label: "Conceito", href: "#conceito" },
   { label: "Marcas", href: "#marcas" },
-  { label: "Seleção", href: "#selecao" },
   { label: "Atendimento", href: "#atendimento" },
+  { label: "Editorial", href: "#editorial" },
 ] as const;
-
-export function formatPrice(value: number): string {
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(value);
-}
-
-// Filtros da galeria de peças: Todas | cada marca com peças | Destaques.
-export type CatalogFilter = "all" | "featured" | (string & {});
-
-export function productsFor(filter: CatalogFilter): Product[] {
-  if (filter === "all") return products;
-  if (filter === "featured") return products.filter((p) => p.featured);
-  const brand = brands.find((b) => b.id === filter);
-  return brand ? products.filter((p) => p.brand === brand.name) : products;
-}
-
-export function pieceCount(brandName: string): number {
-  return products.filter((p) => p.brand === brandName).length;
-}

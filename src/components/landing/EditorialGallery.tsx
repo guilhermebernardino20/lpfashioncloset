@@ -14,6 +14,7 @@ const tiles = [
   { place: "md:col-span-4 md:col-start-9 md:-mt-4", ratio: "aspect-[3/4]", delay: 0.15 },
   { place: "md:col-span-4 md:col-start-2 md:-mt-16", ratio: "aspect-[4/5]", delay: 0.5 },
   { place: "md:col-span-3 md:col-start-8 md:mt-12", ratio: "aspect-[3/4]", delay: 0.25 },
+  { place: "md:col-span-5 md:col-start-1 md:-mt-8", ratio: "aspect-[4/5]", delay: 0.4 },
 ];
 
 const item: Variants = {
@@ -22,7 +23,7 @@ const item: Variants = {
 };
 
 // Colunas ímpares sobem mais rápido que as pares (parallax diferencial).
-function Tile({ index, src, alt, ratio, place, delay }: { index: number; src: string; alt: string; ratio: string; place: string; delay: number }) {
+function Tile({ index, src, alt, brand, ratio, place, delay }: { index: number; src: string; alt: string; brand?: string; ratio: string; place: string; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -33,6 +34,7 @@ function Tile({ index, src, alt, ratio, place, delay }: { index: number; src: st
     <motion.div custom={delay} variants={item} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className={place}>
       <motion.div ref={ref} style={reduced ? undefined : { y }} className="will-change-transform">
         <ParallaxImage src={src} alt={alt} className={ratio} />
+        {brand && <p className="label mt-4">{brand}</p>}
       </motion.div>
     </motion.div>
   );
@@ -47,7 +49,7 @@ export default function EditorialGallery() {
         <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-12">
           {editorial.map((img, i) => {
             const t = tiles[i % tiles.length];
-            return <Tile key={img.id} index={i} src={img.src} alt={img.alt} ratio={t.ratio} place={t.place} delay={t.delay} />;
+            return <Tile key={img.id} index={i} src={img.src} alt={img.alt} brand={img.brand} ratio={t.ratio} place={t.place} delay={t.delay} />;
           })}
         </div>
       </div>
