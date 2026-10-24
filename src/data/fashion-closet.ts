@@ -113,7 +113,28 @@ export const story = {
 
 // Curadoria — o que guia a seleção (derivado do texto institucional).
 export const pillars = [
-  { n: "01", title: "Estética", text: "Marcas, tecidos, modelagens e estilos observados com atenção, peça a peça." },
-  { n: "02", title: "Qualidade", text: "Encontrar uma boa peça vai além de gostar de uma roupa: é reconhecer o seu potencial e a sua qualidade." },
-  { n: "03", title: "Individualidade", text: "Cada escolha é única, assim como a maneira como uma peça pode fazer parte da história de alguém." },
+  {
+    n: "01",
+    title: "Estética",
+    text: "Marcas, tecidos, modelagens e estilos observados com atenção, peça a peça.",
+    image: "/images/editorial/look-1.jpg",
+    alt: "Vestido bordado azul e branco com bolsa em forma de margarida, junto ao mar",
+    position: "50% 35%",
+  },
+  {
+    n: "02",
+    title: "Qualidade",
+    text: "Encontrar uma boa peça vai além de gostar de uma roupa: é reconhecer o seu potencial e a sua qualidade.",
+    image: "/images/editorial/look-5.webp",
+    alt: "Vestido de tricô bege com franjas na barra",
+    position: "50% 60%",
+  },
+  {
+    n: "03",
+    title: "Individualidade",
+    text: "Cada escolha é única, assim como a maneira como uma peça pode fazer parte da história de alguém.",
+    image: "/images/editorial/look-4.webp",
+    alt: "Vestido branco de estampa floral e bolsa laranja diante de um coco pintado",
+    position: "50% 40%",
+  },
 ] as const;

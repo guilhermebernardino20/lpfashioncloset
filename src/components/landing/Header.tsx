@@ -43,7 +43,7 @@ export default function Header() {
             Instagram
           </a>
           <a href={resellerUrl} target="_blank" rel="noopener noreferrer" className={linkCls}>
-            Revendedores
+            Portal revendedor
           </a>
         </nav>
 
@@ -75,7 +75,7 @@ export default function Header() {
             </li>
             <li className="border-t border-neutral-200">
               <a href={resellerUrl} target="_blank" rel="noopener noreferrer" className="display block py-5 text-3xl">
-                Revendedores
+                Portal revendedor
               </a>
             </li>
           </ul>

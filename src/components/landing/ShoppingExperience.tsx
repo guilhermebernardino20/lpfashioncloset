@@ -29,17 +29,17 @@ export default function ShoppingExperience() {
         <TextReveal as="h2" text="Uma experiência que acompanha você." className="display text-[clamp(2.25rem,10vw,4.5rem)] md:text-[clamp(2.75rem,8vw,8rem)]" />
 
         <div className="mt-20 grid md:mt-28 md:grid-cols-[5fr_7fr]">
-          <div className="md:border-r md:border-neutral-200 md:pr-16">
+          <div className="flex flex-col md:border-r md:border-neutral-200 md:pr-16">
             <Rule />
-            <div className="py-12 md:py-16">
-              <Reveal>
+            <div className="flex-1 py-12 md:py-16">
+              <Reveal className="flex h-full flex-col">
                 <p className="label">01</p>
-                <h3 className="display mt-8 text-[clamp(1.875rem,4vw,3.75rem)] [overflow-wrap:anywhere]">Online</h3>
-                <p className="mt-8 max-w-md leading-relaxed text-neutral-500">
+                <h3 className="display mt-8 text-[clamp(1.875rem,4vw,3.75rem)] [overflow-wrap:anywhere] md:min-h-[2.1em]">Online</h3>
+                <p className="mt-8 max-w-md leading-relaxed text-neutral-600">
                   Descubra a seleção Fashion Closet e encontre peças que combinam com seu estilo. Entre em contato para
                   consultar opções e disponibilidade.
                 </p>
-                <div className="mt-10">
+                <div className="mt-auto pt-10">
                   <MagneticButton>
                     <Button href={whatsappLink(messages.online)} external>
                       Consultar online
@@ -50,17 +50,17 @@ export default function ShoppingExperience() {
             </div>
           </div>
 
-          <div className="md:pl-16 md:pt-24">
+          <div className="flex flex-col md:pl-16">
             <Rule delay={0.3} />
-            <div className="py-12 md:py-16">
-              <Reveal delay={0.3}>
+            <div className="flex-1 py-12 md:py-16">
+              <Reveal delay={0.3} className="flex h-full flex-col">
                 <p className="label">02</p>
-                <h3 className="display mt-8 text-[clamp(1.875rem,4vw,3.75rem)] [overflow-wrap:anywhere]">Atendimento personalizado</h3>
-                <p className="mt-8 max-w-md leading-relaxed text-neutral-500">
+                <h3 className="display mt-8 text-[clamp(1.875rem,4vw,3.75rem)] [overflow-wrap:anywhere] md:min-h-[2.1em]">Atendimento personalizado</h3>
+                <p className="mt-8 max-w-md leading-relaxed text-neutral-600">
                   Uma experiência mais próxima para conhecer as peças, explorar possibilidades e encontrar novas
                   combinações, mediante agendamento.
                 </p>
-                <div className="mt-10">
+                <div className="mt-auto pt-10">
                   <MagneticButton>
                     <Button href={whatsappLink(messages.appointment)} external variant="secondary">
                       Solicitar agendamento

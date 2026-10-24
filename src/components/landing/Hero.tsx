@@ -27,10 +27,6 @@ export default function Hero() {
     <section ref={ref} id="topo" className="h-[100svh] min-h-[600px] pb-5 pt-[76px] md:pb-8">
       <div className="mx-auto flex h-full max-w-[1400px] flex-col gap-5 px-5 md:px-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
         <motion.div style={{ y: textY }} className="shrink-0 will-change-transform lg:col-span-7">
-          {/* 1. label em fade → 2. título linha a linha → 3. apoio e CTAs */}
-          <motion.p {...fade(0)} className="label mb-4 md:mb-6">
-            [ Fashion Closet — Curadoria de outlet ]
-          </motion.p>
           <TextReveal
             as="h1"
             text="Peças que merecem ser descobertas."
@@ -62,12 +58,9 @@ export default function Hero() {
             reveal
             revealDelay={intro + 0.4}
             position="50% 25%"
-            className="min-h-0 flex-1 lg:h-[calc(100svh-11rem)] lg:w-[calc((100svh-11rem)*0.75)] lg:max-w-full lg:flex-none"
+            className="min-h-0 flex-1 lg:h-[calc(100svh-9rem)] lg:w-[calc((100svh-9rem)*0.75)] lg:max-w-full lg:flex-none"
             sizes="(min-width: 1024px) 40vw, 100vw"
           />
-          <motion.p {...fade(1.1)} className="label mt-3 hidden lg:block">
-            Editorial — Fashion Closet
-          </motion.p>
         </div>
       </div>
     </section>

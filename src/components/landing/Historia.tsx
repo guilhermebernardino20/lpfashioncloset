@@ -9,7 +9,6 @@ export default function Historia() {
   return (
     <section id="historia" className="border-t border-neutral-200 py-20 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-        <p className="label mb-8 md:mb-12">Nossa história</p>
         <TextReveal
           as="h2"
           text={story.title}
