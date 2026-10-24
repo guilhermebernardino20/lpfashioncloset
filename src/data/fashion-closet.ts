@@ -11,6 +11,9 @@ export const contact = {
   },
 } as const;
 
+// Área de revendedores (sistema de estoque).
+export const resellerUrl = "https://fashion-closet-estoque.vercel.app/login";
+
 export function whatsappLink(message: string): string {
   return `https://wa.me/${contact.whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
@@ -30,15 +33,16 @@ export type Brand = {
   descriptor: string;
   logo: string; // PNG monocromático em public/brand/marcas
   logoHeight: number; // altura de exibição (px) para equilibrar o peso óptico
+  campaign: string; // foto de campanha usada no Brand Matrix (provisória: foto da seleção)
 };
 
 // Expansível: basta adicionar novos itens ao array.
 export const brands: Brand[] = [
-  { id: "farm", logo: "/brand/marcas/farm.png", logoHeight: 52, name: "Farm", descriptor: "Estampa, cor e leveza brasileira." },
-  { id: "zara", logo: "/brand/marcas/zara.png", logoHeight: 34, name: "Zara", descriptor: "Tendência com ritmo de passarela." },
-  { id: "animale", logo: "/brand/marcas/animale.png", logoHeight: 36, name: "Animale", descriptor: "Sofisticação em corte e silhueta." },
-  { id: "dimy", logo: "/brand/marcas/dimy.png", logoHeight: 30, name: "Dimy", descriptor: "Feminilidade em tecidos fluidos." },
-  { id: "nati-vozza", logo: "/brand/marcas/nati-vozza.png", logoHeight: 34, name: "Nati Vozza", descriptor: "Peças de atitude, prontas para combinar." },
+  { id: "farm", logo: "/brand/marcas/farm.png", campaign: "/images/editorial/hero.jpg", logoHeight: 52, name: "Farm", descriptor: "Estampa, cor e leveza brasileira." },
+  { id: "zara", logo: "/brand/marcas/zara.png", campaign: "/images/produtos/p02.jpg", logoHeight: 34, name: "Zara", descriptor: "Tendência com ritmo de passarela." },
+  { id: "animale", logo: "/brand/marcas/animale.png", campaign: "/images/produtos/p05.webp", logoHeight: 36, name: "Animale", descriptor: "Sofisticação em corte e silhueta." },
+  { id: "dimy", logo: "/brand/marcas/dimy.png", campaign: "/images/produtos/p03.webp", logoHeight: 30, name: "Dimy", descriptor: "Feminilidade em tecidos fluidos." },
+  { id: "nati-vozza", logo: "/brand/marcas/nati-vozza.png", campaign: "/images/produtos/p06.webp", logoHeight: 34, name: "Nati Vozza", descriptor: "Peças de atitude, prontas para combinar." },
 ];
 
 export type Product = {
@@ -48,16 +52,18 @@ export type Product = {
   category: string;
   price?: number;
   image: string;
+  detailOrigin: string; // foco do recorte de detalhe exibido no hover (transform-origin)
+  featured?: boolean;
   demo: true; // dados demonstrativos — substituir pelo catálogo real
 };
 
 export const products: Product[] = [
-  { id: "p01", name: "Vestido midi bordado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p01.jpg", demo: true },
-  { id: "p02", name: "Vestido assimétrico rosé", brand: "Zara", category: "Vestidos", image: "/images/produtos/p02.jpg", demo: true },
-  { id: "p03", name: "Vestido longo fluido", brand: "Dimy", category: "Vestidos", image: "/images/produtos/p03.webp", demo: true },
-  { id: "p04", name: "Vestido branco estampado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p04.webp", demo: true },
-  { id: "p05", name: "Vestido tricô com franjas", brand: "Animale", category: "Vestidos", image: "/images/produtos/p05.webp", demo: true },
-  { id: "p06", name: "Blazer e short jeans", brand: "Nati Vozza", category: "Looks", image: "/images/produtos/p06.webp", demo: true },
+  { id: "p01", detailOrigin: "50% 45%", featured: true, name: "Vestido midi bordado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p01.jpg", demo: true },
+  { id: "p02", detailOrigin: "45% 45%", featured: true, name: "Vestido assimétrico rosé", brand: "Zara", category: "Vestidos", image: "/images/produtos/p02.jpg", demo: true },
+  { id: "p03", detailOrigin: "50% 45%", name: "Vestido longo fluido", brand: "Dimy", category: "Vestidos", image: "/images/produtos/p03.webp", demo: true },
+  { id: "p04", detailOrigin: "40% 55%", featured: true, name: "Vestido branco estampado", brand: "Farm", category: "Vestidos", image: "/images/produtos/p04.webp", demo: true },
+  { id: "p05", detailOrigin: "50% 88%", name: "Vestido tricô com franjas", brand: "Animale", category: "Vestidos", image: "/images/produtos/p05.webp", demo: true },
+  { id: "p06", detailOrigin: "50% 50%", name: "Blazer e short jeans", brand: "Nati Vozza", category: "Looks", image: "/images/produtos/p06.webp", demo: true },
 ];
 
 export type EditorialImage = {
@@ -91,4 +97,18 @@ export const nav = [
 
 export function formatPrice(value: number): string {
   return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(value);
+}
+
+// Filtros da galeria de peças: Todas | cada marca com peças | Destaques.
+export type CatalogFilter = "all" | "featured" | (string & {});
+
+export function productsFor(filter: CatalogFilter): Product[] {
+  if (filter === "all") return products;
+  if (filter === "featured") return products.filter((p) => p.featured);
+  const brand = brands.find((b) => b.id === filter);
+  return brand ? products.filter((p) => p.brand === brand.name) : products;
+}
+
+export function pieceCount(brandName: string): number {
+  return products.filter((p) => p.brand === brandName).length;
 }

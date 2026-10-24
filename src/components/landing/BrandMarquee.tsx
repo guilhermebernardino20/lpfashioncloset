@@ -12,7 +12,7 @@ function Row({ hidden }: { hidden?: boolean }) {
           <Image
             src={b.logo}
             alt={hidden ? "" : b.name}
-            width={Math.round((b.logoHeight * 4) / 1)}
+            width={b.logoHeight * 4}
             height={b.logoHeight}
             unoptimized
             style={{ height: b.logoHeight, width: "auto" }}
@@ -25,11 +25,8 @@ function Row({ hidden }: { hidden?: boolean }) {
 
 export default function BrandMarquee() {
   return (
-    <section aria-labelledby="curadoria" className="border-y border-line bg-paper py-12 md:py-16">
-      <h2
-        id="curadoria"
-        className="mb-10 px-5 text-center text-[11px] uppercase tracking-[0.28em] text-gray md:mb-12"
-      >
+    <section aria-labelledby="curadoria" className="border-y border-neutral-200 py-14 md:py-20">
+      <h2 id="curadoria" className="label mb-10 px-5 text-center md:mb-14">
         Nossa curadoria de marcas
       </h2>
       <div className="marquee overflow-hidden">

@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-// Logo oficial (public/brand). "ink" = texto escuro (fundos claros); "paper" = texto claro (fundos escuros).
-export default function Logo({ tone = "ink", className = "h-9" }: { tone?: "ink" | "paper"; className?: string }) {
+// Logo oficial (public/brand/logo.png): só o wordmark "Fashion Closet", em tom escuro para fundo claro.
+export default function Logo({ className = "h-[11px]" }: { className?: string }) {
   return (
     <Image
-      src={tone === "ink" ? "/brand/logo-ink.svg" : "/brand/logo-paper.svg"}
-      alt="Fashion Closet — Brands Hub"
-      width={302}
-      height={72}
+      src="/brand/logo.png"
+      alt="Fashion Closet"
+      width={1211}
+      height={64}
       unoptimized
       priority
       className={`w-auto ${className}`}

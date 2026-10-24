@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Inconsolata, Manrope } from "next/font/google";
 import "./globals.css";
 
-const serif = Instrument_Serif({
-  variable: "--font-serif-display",
+const serif = Inconsolata({
+  variable: "--font-serif-display", // títulos (nome da variável mantido; a fonte é monoespaçada)
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
 });
 
-const sans = Inter({
+const sans = Manrope({
   variable: "--font-sans-ui",
   subsets: ["latin"],
 });

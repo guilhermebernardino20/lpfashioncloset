@@ -1,10 +1,9 @@
-type Variant = "solid" | "outline" | "solid-light" | "outline-light";
+type Variant = "primary" | "secondary";
 
-const styles: Record<Variant, string> = {
-  solid: "bg-ink text-paper border-ink hover:bg-paper hover:text-ink",
-  outline: "bg-transparent text-ink border-ink hover:bg-ink hover:text-paper",
-  "solid-light": "bg-paper text-ink border-paper hover:bg-transparent hover:text-paper",
-  "outline-light": "bg-transparent text-paper border-paper hover:bg-paper hover:text-ink",
+// Preenchimento fluido: uma camada sobe do rodapé do botão no hover.
+const styles: Record<Variant, { base: string; fill: string }> = {
+  primary: { base: "border-fg bg-fg text-canvas hover:text-fg", fill: "bg-canvas" },
+  secondary: { base: "border-neutral-300 bg-transparent text-fg hover:border-fg hover:text-canvas", fill: "bg-fg" },
 };
 
 type Props = {
@@ -15,14 +14,19 @@ type Props = {
   className?: string;
 };
 
-export default function Button({ href, children, variant = "solid", external, className = "" }: Props) {
+export default function Button({ href, children, variant = "primary", external, className = "" }: Props) {
+  const s = styles[variant];
   return (
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`inline-flex items-center justify-center rounded-none border px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.2em] transition-colors duration-300 ${styles[variant]} ${className}`}
+      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-none border px-7 py-4 text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-500 ${s.base} ${className}`}
     >
-      {children}
+      <span
+        aria-hidden
+        className={`absolute inset-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 ${s.fill}`}
+      />
+      <span className="relative">{children}</span>
     </a>
   );
 }

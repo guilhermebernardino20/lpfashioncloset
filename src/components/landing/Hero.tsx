@@ -1,36 +1,62 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { heroImage } from "@/data/fashion-closet";
+import { EASE } from "@/components/motion/ease";
+import MagneticButton from "@/components/motion/MagneticButton";
+import ParallaxImage from "@/components/motion/ParallaxImage";
+import TextReveal from "@/components/motion/TextReveal";
 import Button from "./Button";
-import Photo from "./Photo";
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -70]);
+
+  const fade = (delay: number) => ({
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.9, ease: EASE, delay },
+  });
+
   return (
-    <section id="topo" className="bg-paper pt-24 pb-16 md:pt-28 md:pb-24">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 md:px-10 lg:grid-cols-12 lg:items-end lg:gap-8">
-        <div className="lg:col-span-7 lg:pb-6">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.28em] text-gray">Fashion Closet — Brands Hub</p>
-          <h1 className="font-serif text-[clamp(3rem,9.5vw,8.5rem)] uppercase leading-[0.92] tracking-[-0.01em]">
-            Marcas que traduzem o seu <em className="italic">estilo.</em>
-          </h1>
-          <p className="mt-8 max-w-md text-base leading-relaxed text-gray">
+    <section ref={ref} id="topo" className="pt-32 pb-28 md:pt-44 md:pb-40">
+      <div className="mx-auto grid max-w-[1400px] gap-16 px-5 md:px-10 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <motion.div style={{ y: textY }} className="will-change-transform lg:col-span-7">
+          {/* 1. label em fade → 2. título linha a linha → 3. apoio e CTAs */}
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="label mb-10">
+            [ Brands Hub — Curatorial Selection ]
+          </motion.p>
+          <TextReveal as="h1" text="Marcas que traduzem o seu estilo." delay={0.5} className="display text-[clamp(3rem,8vw,8.5rem)]" />
+          <motion.p {...fade(1.4)} className="mt-10 max-w-sm text-base leading-relaxed text-neutral-500">
             Uma seleção de marcas reconhecidas, escolhida para acompanhar diferentes versões de você.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Button href="#selecao">Explorar seleção</Button>
-            <Button href="#conceito" variant="outline">
-              Conhecer o Fashion Closet
-            </Button>
-          </div>
-        </div>
+          </motion.p>
+          <motion.div {...fade(1.55)} className="mt-12 flex flex-col items-start gap-3 sm:flex-row">
+            <MagneticButton>
+              <Button href="#selecao">Explorar seleção</Button>
+            </MagneticButton>
+            <MagneticButton>
+              <Button href="#conceito" variant="secondary">
+                Conhecer o Fashion Closet
+              </Button>
+            </MagneticButton>
+          </motion.div>
+        </motion.div>
 
         <div className="lg:col-span-5">
-          <Photo
+          <ParallaxImage
             src={heroImage.src}
             alt={heroImage.alt}
             priority
-            className="aspect-[4/5]"
+            reveal
+            revealDelay={0.9}
+            className="aspect-[3/4]"
             sizes="(min-width: 1024px) 40vw, 100vw"
           />
-          <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-gray">Seleção · Coleção atual</p>
+          <motion.p {...fade(1.6)} className="label mt-4">
+            Seleção — Coleção atual
+          </motion.p>
         </div>
       </div>
     </section>
