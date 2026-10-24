@@ -54,8 +54,8 @@ html.lenis body {
 .display {
   font-family: var(--font-serif-display), ui-monospace, monospace;
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
@@ -87,5 +87,16 @@ html.lenis body {
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+/* Fail-safe: se o JS falhar, a cortina some sozinha. */
+.preloader {
+  animation: preloader-failsafe 0.01s 7s forwards;
+}
+@keyframes preloader-failsafe {
+  to {
+    visibility: hidden;
+    opacity: 0;
   }
 }

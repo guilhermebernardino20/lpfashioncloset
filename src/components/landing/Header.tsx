@@ -4,11 +4,13 @@ import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { contact, nav, resellerUrl } from "@/data/fashion-closet";
 import Logo from "./Logo";
+import { useIntroDelay } from "./Preloader";
 import { EASE } from "@/components/motion/ease";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const intro = useIntroDelay();
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 50));
 
@@ -19,7 +21,7 @@ export default function Header() {
     <motion.header
       initial={{ y: -32, opacity: 0, height: 80 }}
       animate={{ y: 0, opacity: 1, height: solid ? 60 : 80 }}
-      transition={{ duration: 0.8, ease: EASE, height: { duration: 0.45, ease: EASE } }}
+      transition={{ duration: 0.8, ease: EASE, delay: intro, height: { duration: 0.45, ease: EASE, delay: 0 } }}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${
         solid ? "border-neutral-200 bg-canvas/80 backdrop-blur-md" : "border-transparent bg-transparent"
       }`}
@@ -31,7 +33,7 @@ export default function Header() {
           </motion.div>
         </a>
 
-        <nav aria-label="Principal" className="hidden items-center gap-10 xl:flex">
+        <nav aria-label="Principal" className="hidden items-center gap-7 xl:flex 2xl:gap-10">
           {nav.map((item) => (
             <a key={item.href} href={item.href} className={linkCls}>
               {item.label}

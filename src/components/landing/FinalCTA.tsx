@@ -6,12 +6,12 @@ import Reveal from "./Reveal";
 
 export default function FinalCTA() {
   return (
-    <section className="border-t border-neutral-200 py-28 md:py-40">
+    <section className="border-t border-neutral-200 py-20 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <TextReveal
           as="h2"
-          text="Seu próximo achado começa aqui."
-          className="display text-[clamp(3.5rem,13vw,13rem)] md:max-w-[80%]"
+          text="Uma história que continua sendo escrita."
+          className="display text-[clamp(2.25rem,10.5vw,4.5rem)] md:text-[clamp(3rem,9vw,9rem)]"
         />
         <Reveal delay={0.3}>
           <p className="mt-12 max-w-sm leading-relaxed text-neutral-500">
@@ -20,12 +20,7 @@ export default function FinalCTA() {
           <div className="mt-12 flex flex-col items-start gap-3 sm:flex-row">
             <MagneticButton>
               <Button href={whatsappLink(messages.general)} external>
-                Falar no WhatsApp
-              </Button>
-            </MagneticButton>
-            <MagneticButton>
-              <Button href="#editorial" variant="secondary">
-                Explorar editorial
+                Falar com a gente
               </Button>
             </MagneticButton>
             <MagneticButton>

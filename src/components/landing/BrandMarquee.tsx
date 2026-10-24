@@ -25,8 +25,8 @@ function Row({ hidden }: { hidden?: boolean }) {
 
 export default function BrandMarquee() {
   return (
-    <section aria-labelledby="curadoria" className="border-y border-neutral-200 py-14 md:py-20">
-      <h2 id="curadoria" className="label mb-10 px-5 text-center md:mb-14">
+    <section aria-labelledby="marcas-curadoria" className="border-y border-neutral-200 py-14 md:py-20">
+      <h2 id="marcas-curadoria" className="label mb-10 px-5 text-center md:mb-14">
         Nossa curadoria de marcas
       </h2>
       <div className="marquee overflow-hidden">

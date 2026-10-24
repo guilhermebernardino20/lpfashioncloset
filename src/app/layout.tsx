@@ -13,13 +13,13 @@ const sans = Manrope({
 });
 
 const description =
-  "Fashion Closet — Brands Hub: uma seleção de marcas reconhecidas, escolhida para acompanhar diferentes versões de você.";
+  "Fashion Closet: uma história que começou em casa. Hoje, uma seleção de peças de outlet de marcas reconhecidas, guiada por um olhar atento à estética, à qualidade e à individualidade.";
 
 export const metadata: Metadata = {
-  title: "Fashion Closet — Brands Hub",
+  title: "Fashion Closet — Curadoria de peças de marcas reconhecidas",
   description,
   openGraph: {
-    title: "Fashion Closet — Brands Hub",
+    title: "Fashion Closet — Curadoria de peças de marcas reconhecidas",
     description,
     type: "website",
     locale: "pt_BR",

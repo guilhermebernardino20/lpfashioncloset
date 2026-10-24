@@ -24,9 +24,9 @@ function Rule({ delay = 0 }: { delay?: number }) {
 
 export default function ShoppingExperience() {
   return (
-    <section id="atendimento" className="border-t border-neutral-200 py-28 md:py-40">
+    <section id="atendimento" className="border-t border-neutral-200 py-20 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-        <TextReveal as="h2" text="Uma experiência que acompanha você." className="display text-[clamp(3rem,9.5vw,9rem)] md:max-w-[75%]" />
+        <TextReveal as="h2" text="Uma experiência que acompanha você." className="display text-[clamp(2.25rem,10vw,4.5rem)] md:text-[clamp(2.75rem,8vw,8rem)]" />
 
         <div className="mt-20 grid md:mt-28 md:grid-cols-[5fr_7fr]">
           <div className="md:border-r md:border-neutral-200 md:pr-16">

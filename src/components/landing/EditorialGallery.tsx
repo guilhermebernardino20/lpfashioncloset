@@ -42,7 +42,7 @@ function Tile({ index, src, alt, brand, ratio, place, delay }: { index: number; 
 
 export default function EditorialGallery() {
   return (
-    <section id="editorial" className="border-t border-neutral-200 py-28 md:py-40">
+    <section id="editorial" className="border-t border-neutral-200 py-20 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <p className="label mb-6">Editorial</p>
         <TextReveal as="h2" text="Fashion Closet" className="display mb-20 text-5xl md:text-8xl" />

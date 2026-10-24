@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-const PHRASE = "High-end curation — Brands Hub — Editorial selection — Curitiba — ";
+const PHRASE = "Curadoria — Peças de outlet — Marcas reconhecidas — Curitiba — ";
 
 // Letreiro infinito em baixa velocidade (loop contínuo por translateX).
 export default function EditorialMarquee({ className = "", duration = 60 }: { className?: string; duration?: number }) {
