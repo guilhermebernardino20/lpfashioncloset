@@ -25,7 +25,7 @@ function Row({ hidden }: { hidden?: boolean }) {
 
 export default function BrandMarquee() {
   return (
-    <section aria-labelledby="marcas-curadoria" className="border-y border-neutral-200 py-14 md:py-20">
+    <section aria-labelledby="marcas-curadoria" className="border-y border-neutral-200 py-12 md:py-16">
       <h2 id="marcas-curadoria" className="label mb-10 px-5 text-center md:mb-14">
         Nossa curadoria de marcas
       </h2>

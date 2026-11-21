@@ -3,10 +3,10 @@ import ScrollWords from "./ScrollWords";
 
 export default function Manifesto() {
   return (
-    <section id="conceito" className="py-20 md:py-40">
+    <section id="conceito" className="section">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <ScrollWords as="h2" text="Moda é mais do que vestir." className="display text-[clamp(2.25rem,10.5vw,4.5rem)] md:text-[clamp(3rem,9vw,9rem)]" />
-        <div className="mt-24 grid gap-14 border-t border-neutral-200 pt-14 md:mt-40 md:grid-cols-12 md:gap-10">
+        <div className="mt-16 grid gap-12 border-t border-neutral-200 pt-12 md:mt-28 md:grid-cols-12 md:gap-10">
           <ScrollWords
             text="É reconhecer o que faz sentido para você."
             className="display text-3xl leading-[1.15] md:col-span-6 md:text-5xl md:leading-[1.15]"

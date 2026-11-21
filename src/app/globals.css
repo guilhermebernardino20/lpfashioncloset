@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --canvas: #ffffff;
-  --fg: #0a0a0a;
+  --canvas: #f3efe8;
+  --fg: #0b0b0b;
 }
 
 @theme inline {
   --color-canvas: var(--canvas);
   --color-fg: var(--fg);
-  --font-sans: var(--font-sans-ui);
-  --font-serif: var(--font-serif-display);
+  --font-sans: var(--font-nexa);
+  --font-serif: var(--font-nexa);
 }
 
 html {
@@ -21,7 +21,8 @@ html {
 body {
   background: var(--canvas);
   color: var(--fg);
-  font-family: var(--font-sans-ui), system-ui, sans-serif;
+  font-family: var(--font-nexa), system-ui, sans-serif;
+  font-weight: 200;
   overflow-x: clip;
 }
 
@@ -39,6 +40,7 @@ html.lenis body {
 
 /* Micro-label editorial: caixa alta, tracking amplo, neutral-400 */
 .label {
+  font-weight: 900;
   font-size: 10px;
   line-height: 1.4;
   text-transform: uppercase;
@@ -52,10 +54,10 @@ html.lenis body {
 }
 
 .display {
-  font-family: var(--font-serif-display), ui-monospace, monospace;
-  font-weight: 400;
-  line-height: 1.04;
-  letter-spacing: -0.01em;
+  font-family: var(--font-nexa), system-ui, sans-serif;
+  font-weight: 200;
+  line-height: 1.08;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -99,4 +101,94 @@ html.lenis body {
     visibility: hidden;
     opacity: 0;
   }
+}
+
+/* Seções escuras: invertem as variáveis de cor (botões, textos e bordas acompanham). */
+.theme-dark {
+  --canvas: #0b0b0b;
+  --fg: #f3efe8;
+  background: var(--canvas);
+  color: var(--fg);
+}
+.theme-dark img[alt="Fashion Closet"] {
+  filter: invert(1);
+}
+.theme-dark .border-neutral-200 {
+  border-color: rgba(243, 239, 232, 0.14);
+}
+.theme-dark .border-neutral-300 {
+  border-color: rgba(243, 239, 232, 0.3);
+}
+.theme-dark .text-neutral-500,
+.theme-dark .label {
+  color: #a8a29a;
+}
+
+/* Microtexto de canto, no estilo editorial minimalista. */
+.micro {
+  font-weight: 900;
+  font-size: 9px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+/* Ritmo vertical único para todas as seções. */
+.section {
+  padding-block: 6rem;
+}
+@media (min-width: 768px) {
+  .section {
+    padding-block: 9rem;
+  }
+}
+
+/* Nexa ExtraLight é fina: textos secundários ficam mais escuros para manter a leitura. */
+.text-neutral-500,
+.text-neutral-600 {
+  color: #2f2f2f;
+}
+.theme-dark .text-neutral-400,
+.theme-dark .text-neutral-500,
+.theme-dark .text-neutral-600 {
+  color: #d6d0c6;
+}
+.theme-dark .label {
+  color: #bdb7ad;
+}
+.label {
+  color: #4a4a4a;
+}
+/* */
+
+/* Mobile / UX */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -4rem;
+  z-index: 200;
+  background: #fff;
+  color: #000;
+  padding: 0.75rem 1rem;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.skip-link:focus {
+  top: 1rem;
 }

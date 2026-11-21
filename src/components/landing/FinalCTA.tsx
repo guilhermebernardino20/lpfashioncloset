@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 
 export default function FinalCTA() {
   return (
-    <section className="border-t border-neutral-200 py-20 md:py-40">
+    <section className="theme-dark section">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <TextReveal
           as="h2"

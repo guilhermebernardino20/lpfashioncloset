@@ -51,9 +51,9 @@ export type EditorialImage = {
 
 export const heroImage: EditorialImage = {
   id: "hero",
-  src: "/images/editorial/hero.jpg",
-  alt: "Duas modelos sorrindo em movimento, com vestidos estampados em verde e amarelo, em um parque urbano",
-  ratio: "portrait",
+  src: "/images/editorial/entrada.jpg",
+  alt: "Modelo em preto e branco, em três momentos de movimento, vestindo jaqueta de couro",
+  ratio: "landscape",
 };
 
 export const editorial: EditorialImage[] = [
