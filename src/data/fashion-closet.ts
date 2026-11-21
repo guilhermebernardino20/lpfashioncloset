@@ -138,3 +138,19 @@ export const pillars = [
     position: "50% 40%",
   },
 ] as const;
+
+// Assinatura do desenvolvedor (exibida no rodapé, com pop-up "sobre").
+export const developer = {
+  name: "Guilherme Bernardino",
+  roles: ["Engenharia de Software", "Design Digital", "Desenvolvimento Criativo"],
+  about:
+    "Atuo na interseção entre design visual, tecnologia e experiências digitais. Meu foco está em transformar conceitos complexos em interfaces refinadas, intuitivas e de alto desempenho.",
+  institution: "Estudante de Engenharia de Software, PUCPR",
+  location: "Curitiba, PR / BR",
+  portfolio: "https://guilhermebernardino.tech",
+  links: [
+    { label: "GitHub", href: "https://github.com/guilhermebernardino20" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/guilhermebernardinoc" },
+    { label: "Instagram", href: "https://instagram.com/guibernardinoc" },
+  ],
+} as const;

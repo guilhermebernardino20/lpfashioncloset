@@ -25,7 +25,7 @@ export default function EditorialGallery() {
     <section id="editorial" className="theme-dark section">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <TextReveal as="h2" text="Fashion Closet" className="display mb-14 text-[clamp(3rem,12vw,11rem)] tracking-[0.04em] md:mb-20" />
-        <div className="grid grid-cols-2 gap-x-3 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-12">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-8 max-md:[&>*:nth-child(even)]:mt-10 md:grid-cols-3 md:gap-x-6 md:gap-y-12">
           {editorial.map((img, i) => (
             <Tile key={img.id} src={img.src} alt={img.alt} brand={img.brand} delay={(i % 3) * 0.1} />
           ))}

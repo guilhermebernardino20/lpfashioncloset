@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ParallaxImage from "@/components/motion/ParallaxImage";
 import TextReveal from "@/components/motion/TextReveal";
@@ -12,6 +13,15 @@ const rhythm = ["", "", ""];
 const ratios = ["aspect-[3/4]", "aspect-[3/4]", "aspect-[3/4]"];
 
 export default function Curadoria() {
+  const scroller = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+  const onScroll = () => {
+    const el = scroller.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setProgress(max > 0 ? el.scrollLeft / max : 0);
+  };
+
   return (
     <section id="curadoria" className="section">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
@@ -28,7 +38,7 @@ export default function Curadoria() {
           </Reveal>
         </div>
 
-        <div className="no-scrollbar -mx-5 mt-14 flex scroll-px-5 snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:mt-20 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0">
+        <div ref={scroller} onScroll={onScroll} className="no-scrollbar -mx-5 mt-14 flex scroll-px-5 snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:mt-20 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0">
           {pillars.map((p, i) => (
             <motion.article
               key={p.n}
@@ -48,6 +58,15 @@ export default function Curadoria() {
               <p className="mt-5 max-w-sm leading-relaxed text-neutral-600">{p.text}</p>
             </motion.article>
           ))}
+        </div>
+
+        {/* Indicador do carrossel (só no celular) */}
+        <div aria-hidden className="mt-6 flex items-center gap-4 md:hidden">
+          <span className="label tabular-nums">{String(Math.min(pillars.length, Math.round(progress * (pillars.length - 1)) + 1)).padStart(2, "0")}</span>
+          <div className="relative h-px flex-1 bg-neutral-300">
+            <div className="absolute inset-y-0 left-0 bg-fg" style={{ width: `${Math.max(1 / pillars.length, progress) * 100}%` }} />
+          </div>
+          <span className="label tabular-nums">{String(pillars.length).padStart(2, "0")}</span>
         </div>
       </div>
     </section>
