@@ -19,7 +19,7 @@ export default function Curadoria() {
           <TextReveal
             as="h2"
             text="Uma seleção de peças de outlet de marcas reconhecidas."
-            className="display text-[clamp(2.25rem,9.5vw,4.5rem)] md:col-span-8 md:text-[clamp(3rem,6vw,6.5rem)]"
+            className="display text-[clamp(1.75rem,7vw,2.75rem)] md:col-span-7 md:text-[clamp(2rem,3.6vw,3.75rem)]"
           />
           <Reveal className="md:col-span-3 md:col-start-10">
             <p className="leading-relaxed text-neutral-600">

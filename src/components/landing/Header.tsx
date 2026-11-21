@@ -9,8 +9,23 @@ import { useIntroDelay } from "./Preloader";
 import { EASE } from "@/components/motion/ease";
 
 // Link com filete que se desenha no hover e permanece na seção ativa.
-function NavLink({ href, label, i, external, active, intro }: { href: string; label: string; i: number; external?: boolean; active: string; intro: number }) {
+function NavLink({ href, label, i, external, active, intro, pill }: { href: string; label: string; i: number; external?: boolean; active: string; intro: number; pill?: boolean }) {
   const on = active === href;
+  if (pill) {
+    return (
+      <motion.a
+        href={href}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: EASE, delay: intro + 0.5 + i * 0.06 }}
+        className="group relative flex h-8 items-center overflow-hidden border border-white/35 px-4 text-[10px] font-black uppercase tracking-[0.24em] whitespace-nowrap text-white transition-colors duration-500 hover:text-black"
+      >
+        <span aria-hidden className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
+        <span className="relative">{label}</span>
+      </motion.a>
+    );
+  }
   return (
     <motion.a
       href={href}
@@ -88,7 +103,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-5 md:px-10">
-        <nav aria-label="Principal" className="hidden flex-1 items-center gap-9 xl:flex">
+        <nav aria-label="Principal" className="hidden flex-1 items-center gap-9 xl:flex [&:hover_a:not(:hover)]:!text-white/35">
           {nav.slice(0, 3).map((item, i) => (
             <NavLink key={item.href} href={item.href} label={item.label} i={i} active={active} intro={intro} />
           ))}
@@ -100,11 +115,11 @@ export default function Header() {
           </motion.div>
         </a>
 
-        <nav aria-label="Secundária" className="hidden flex-1 items-center justify-end gap-9 xl:flex">
+        <nav aria-label="Secundária" className="hidden flex-1 items-center justify-end gap-9 xl:flex [&:hover_a:not(:hover):not(:last-child)]:!text-white/35">
           {nav.slice(3).map((item, i) => (
             <NavLink key={item.href} href={item.href} label={item.label} i={i + 3} active={active} intro={intro} />
           ))}
-          <NavLink href={resellerUrl} label="Revendedor" i={5} external active={active} intro={intro} />
+          <NavLink href={resellerUrl} label="Revendedor" i={5} external pill active={active} intro={intro} />
         </nav>
 
         <button
@@ -131,7 +146,12 @@ export default function Header() {
         </button>
       </div>
 
-          <motion.span
+          {/* Véu sutil no topo para garantir leitura sobre qualquer foto */}
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-[140%] bg-gradient-to-b from-black/45 to-transparent transition-opacity duration-500 ${solid ? "opacity-0" : "opacity-100"}`}
+      />
+      <motion.span
         aria-hidden
         style={{ scaleX: progress, opacity: solid && !open ? 1 : 0 }}
         className="absolute inset-x-0 -bottom-px h-px origin-left bg-white/80 transition-opacity duration-300"
