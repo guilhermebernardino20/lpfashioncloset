@@ -36,10 +36,10 @@ export default function Historia() {
         <div className="border-t border-neutral-200 pt-14 md:pt-24">
           <ScrollWords
             text={story.essence}
-            className="display text-[clamp(1.75rem,7vw,3.25rem)] leading-[1.15] md:max-w-[80%] md:text-[clamp(2.25rem,4.6vw,5rem)] md:leading-[1.12]"
+            className="display text-[clamp(1.5rem,6vw,3.25rem)] leading-[1.18] md:max-w-[80%] md:text-[clamp(2.25rem,4.6vw,5rem)] md:leading-[1.12]"
           />
           <Reveal className="mt-12 md:mt-20">
-            <p className="max-w-xl text-base font-semibold leading-relaxed md:text-lg">{story.signature}</p>
+            <p className="max-w-xl border-l border-white/30 pl-5 text-[11px] font-black uppercase leading-[2] tracking-[0.2em] md:text-xs">{story.signature}</p>
           </Reveal>
         </div>
       </div>

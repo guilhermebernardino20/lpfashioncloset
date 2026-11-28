@@ -20,7 +20,7 @@ export default function Button({ href, children, variant = "primary", external, 
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-none border px-7 py-4 text-[11px] font-black uppercase tracking-[0.25em] transition-colors duration-500 ${s.base} ${className}`}
+      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-none border px-7 py-4 active:scale-[0.98] text-[11px] font-black uppercase tracking-[0.25em] transition-[color,transform] duration-500 ${s.base} ${className}`}
     >
       <span
         aria-hidden

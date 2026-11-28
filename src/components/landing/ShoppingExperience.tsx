@@ -45,7 +45,7 @@ function Card({ o, i }: { o: Option; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 1, ease: EASE, delay: i * 0.12 }}
-      className="group relative block aspect-[4/5] w-[82%] shrink-0 snap-start overflow-hidden bg-neutral-900 text-white md:aspect-[4/5] md:w-auto"
+      className="group relative block aspect-[4/5] w-[82%] shrink-0 snap-start overflow-hidden bg-neutral-900 text-white active:opacity-90 md:aspect-[4/5] md:w-auto"
     >
       <Image
         src={o.image}
@@ -97,7 +97,7 @@ export default function ShoppingExperience() {
             </Reveal>
           </div>
 
-          <div className="no-scrollbar -mx-5 flex scroll-px-5 snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:col-span-8 md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0">
+          <div className="no-scrollbar -mx-5 flex scroll-px-5 snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-hidden overscroll-x-contain px-5 md:col-span-8 md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0">
             <Card o={options[0]} i={0} />
             <Card o={options[1]} i={1} />
           </div>

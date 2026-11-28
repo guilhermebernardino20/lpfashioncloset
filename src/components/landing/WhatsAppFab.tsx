@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { messages, whatsappLink } from "@/data/fashion-closet";
 import { EASE } from "@/components/motion/ease";
@@ -8,12 +8,28 @@ import { EASE } from "@/components/motion/ease";
 // Atalho de contato sempre à mão no celular: aparece depois do hero.
 export default function WhatsAppFab() {
   const [show, setShow] = useState(false);
+  const [atEnd, setAtEnd] = useState(false);
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (v) => setShow(v > window.innerHeight * 0.9));
 
+  // O CTA final e o rodapé já trazem o contato: o botão flutuante sai de cena.
+  useEffect(() => {
+    const targets = document.querySelectorAll("#contato, footer");
+    const seen = new Set<Element>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+        setAtEnd(seen.size > 0);
+      },
+      { threshold: 0.25 },
+    );
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <AnimatePresence>
-      {show && (
+      {show && !atEnd && (
         <motion.a
           href={whatsappLink(messages.general)}
           target="_blank"

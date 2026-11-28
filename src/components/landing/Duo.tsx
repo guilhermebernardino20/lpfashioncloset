@@ -10,7 +10,7 @@ export default function Duo() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2">
       {tiles.map((t) => (
-        <a key={t.src} href={t.href} className="group relative block aspect-[4/5] overflow-hidden md:aspect-square">
+        <a key={t.src} href={t.href} className="group relative block aspect-[4/5] overflow-hidden active:opacity-90 md:aspect-square">
           <Image
             src={t.src}
             alt={t.alt}

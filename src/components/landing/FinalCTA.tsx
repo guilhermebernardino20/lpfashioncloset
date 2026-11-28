@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 
 export default function FinalCTA() {
   return (
-    <section className="theme-dark section">
+    <section id="contato" className="theme-dark section">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <TextReveal
           as="h2"
@@ -17,14 +17,14 @@ export default function FinalCTA() {
           <p className="mt-12 max-w-sm leading-relaxed text-neutral-500">
             Descubra a seleção Fashion Closet e encontre peças que merecem fazer parte do seu guarda-roupa.
           </p>
-          <div className="mt-12 flex flex-col items-start gap-3 sm:flex-row">
-            <MagneticButton>
-              <Button href={whatsappLink(messages.general)} external>
+          <div className="mt-12 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
+            <MagneticButton className="block sm:inline-block">
+              <Button href={whatsappLink(messages.general)} external className="w-full sm:w-auto">
                 Falar com a gente
               </Button>
             </MagneticButton>
-            <MagneticButton>
-              <Button href={contact.instagram.url} variant="secondary" external>
+            <MagneticButton className="block sm:inline-block">
+              <Button href={contact.instagram.url} variant="secondary" external className="w-full sm:w-auto">
                 Acompanhar no Instagram
               </Button>
             </MagneticButton>

@@ -69,7 +69,7 @@ export default function Hero() {
           className="micro absolute right-5 top-24 hidden text-right text-white sm:block md:right-10"
         />
 
-        <div className="absolute inset-x-0 bottom-0 px-5 pb-6 md:px-10 md:pb-10">
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:px-10 md:pb-10">
           {/* Filete que se desenha da esquerda para a direita acima do wordmark */}
           <motion.span
             aria-hidden
